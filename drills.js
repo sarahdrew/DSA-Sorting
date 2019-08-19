@@ -69,6 +69,8 @@ function swap(array, i, j) {
     array[j] = tmp;
 }
 
+
+//quicksort
 function quickSort(array, start = 0, end = array.length) {
     if (start >= end) {
         return array;
@@ -77,7 +79,9 @@ function quickSort(array, start = 0, end = array.length) {
     array = quickSort(array, start, middle);
     array = quickSort(array, middle + 1, end);
     return array;
+
 }
+//partition
 
 function partition(array, start, end) {
     const pivot = array[end - 1];
@@ -105,21 +109,7 @@ function qSort(array, start = 0, end = array.length) {
 }
 
 
-//msort that sorts the data above
-function mSort(array) {
-    if (array.length <= 1) {
-        return array;
-    }
 
-    const middle = Math.floor(array.length / 2);
-    let left = array.slice(0, middle);
-    let right = array.slice(middle, array.length);
-
-    left = mSort(left);
-    right = mSort(right);
-
-    return merge(left, right, array);
-}
 
 console.log(qSort(data));
 
@@ -133,7 +123,7 @@ function main() {
     list.insertFirst(66);
     list.insertFirst(7);
 
-    //   console.log(list);
+    console.log(`listt `, list);
 
     linkedMerge(list);
 }
@@ -152,7 +142,7 @@ function linkedMerge(ll) {
 
     sortedArray.push(ll.head.value);
 
-    console.log(mSort(sortedArray));
+    console.log(`mSort(sortedArray): `, mSort(sortedArray));
 }
 
 main();
@@ -211,3 +201,19 @@ function booksInOrder(array) {
 const books = ['Green Eggs and Ham', 'Loving Frank', 'Sula', 'Great Gatsby'];
 
 console.log(booksInOrder(books));
+
+//msort that sorts the data above
+function mSort(array) {
+    if (array.length <= 1) {
+        return array;
+    }
+
+    const middle = Math.floor(array.length / 2);
+    let left = array.slice(0, middle);
+    let right = array.slice(middle, array.length);
+
+    left = mSort(left);
+    right = mSort(right);
+
+    return merge(left, right, array);
+}
